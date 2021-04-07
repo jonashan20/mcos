@@ -12,6 +12,7 @@ public class MemberVO {
 	private String email;
 	private String hiredate;
 	private int salary;
+	private String auth;
 	public String getUserId() {
 		return userId;
 	}
@@ -59,6 +60,13 @@ public class MemberVO {
 	}
 	public void setSalary(int salary) {
 		this.salary = salary;
+	}
+	
+	public String getAuth() {
+		return auth;
+	}
+	public void setAuth(String auth) {
+		this.auth = auth;
 	}
 	@Override
 	public String toString() {

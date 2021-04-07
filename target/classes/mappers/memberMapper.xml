@@ -11,11 +11,23 @@
     
     <!-- 로그인 -->
 	<select id="login" resultType="com.project.maos.vo.MemberVO">
-		SELECT USERID, USERPASS, USERNAME
+		SELECT USERID, USERPASS, USERNAME,
 		  FROM MEMBER
 		 WHERE USERID = #{userId}
 		 AND USERPASS = #{userPass}
 	</select>
+	
+<!-- 	<update id="authupdate" parameterType="com.project.maos.vo.MemberVO" >
+		UPDATE MEMBER
+			SER
+				auth = 'ROLE_ADMIN'
+			WHERE userid = #{3333}
+	</update> -->
+	
+	<insert id="executiveregister">
+	    INSERT INTO MEMBER(USERID,USERPASS,USERNAME,EMAIL,HIREDATE,SALARY,AUTH) 
+	    VALUES(#{userId},#{userPass},#{userName},#{email},#{hiredate},#{salary},'ROLE_MEMBER,ROLE_ADMIN')
+    </insert>
 	
 	
 </mapper>

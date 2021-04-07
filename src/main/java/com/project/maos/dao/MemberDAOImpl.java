@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import com.project.maos.vo.MemberVO;
 
+
 @Repository
 public class MemberDAOImpl implements MemberDAO {
 	
@@ -25,6 +26,13 @@ public class MemberDAOImpl implements MemberDAO {
 		
 		return sql.selectOne(namespace+".login", vo);
 	}
+
+	@Override
+	public void executiveregister(MemberVO vo) throws Exception {
+		sql.insert(namespace+".executiveregister",vo);
+		
+	}
+
 
 	
 }

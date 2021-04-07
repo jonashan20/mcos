@@ -10,6 +10,7 @@ import com.project.maos.vo.MemberVO;
 
 
 
+
 @Service
 public class MemberServiceImpl implements MemberService {
 	
@@ -27,6 +28,13 @@ public class MemberServiceImpl implements MemberService {
 	public MemberVO login(MemberVO vo) throws Exception {
 		return dao.login(vo);
 	}
+
+	@Override
+	public void executiveregister(MemberVO vo) throws Exception {
+		dao.executiveregister(vo);
+		
+	}
+
 	
 	
 }

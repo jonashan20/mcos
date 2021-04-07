@@ -29,14 +29,6 @@ public class HomeController {
 	public String pricing() {
 		return "pricing";
 	}
-	@RequestMapping(value="/users/admin")
-	public String admintest() {
-		return "/users/admin";
-	}
-	@RequestMapping(value="/users/member")
-	public String membertest() {
-		return "/users/member";
-	}
 	@RequestMapping(value="payment1")
 	public String payment1() {
 		return "payment1";

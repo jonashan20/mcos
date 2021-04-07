@@ -80,7 +80,7 @@
             <div class="logo-login">
                 <a href="index.jsp"><img src="/resources/images/mainlogo.svg" alt=""></a>
             </div>
-            <h2>회원가입</h2>
+            <h2>회원 회원가입</h2>
 
             <div class="form-input">
                 <label for="userId">사번</label>
@@ -91,7 +91,7 @@
                 <input type="password" name="userPass" id="userPass" placeholder="Password">
             </div>
               <div class="form-input">
-                <label for="userName">닉네임</label>
+                <label for="userName">이름</label>
                 <input type="text" name="userName" id="userName" placeholder="nickName">
             </div>
             <div class="form-input">

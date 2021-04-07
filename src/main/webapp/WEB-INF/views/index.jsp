@@ -179,10 +179,6 @@
 		text-decoration: none;
 		outline: none;
 	}
-	#logout{
-		background:url(/resources/images/bg1.jpg);
-		color:white;
-	}
 	</style>
 	<!-- End demo purposes only -->
 
@@ -216,18 +212,20 @@
 						<li><a href="/">홈</a></li>
 						<li><a href="tour">기능소개</a></li>
 						<li><a href="pricing">가격정책</a></li>
+						<li><a href="/notice/list?num=1">고객지원</a></li>
 					</ul>
 					<h1 id="fh5co-logo"><img src="/resources/images/mainlogo.svg"><a href="/">MCOS<span>.</span></a></h1>
 					<sec:authorize access="isAnonymous()">
 					<ul class="pull-right right-menu">
-						<li><a href="member/login">로그인</a></li>
-						<li class="fh5co-cta-btn"><a href="member/register">회원가입</a></li>
+						<li><a href="member/login">회원로그인</a></li>
+						<li class="fh5co-cta-btn"><a href="member/register">회원회원가입</a></li>
+						<li class="fh5co-cta-btn"><a href="member/executive_register">사용자회원가입</a></li>
 					</ul>
 					</sec:authorize>
 					<sec:authorize access="isAuthenticated()"> 
 					<ul class="pull-right right-menu">
 						<li><form action="${pageContext.request.contextPath}/logout" method="POST">
-						<input type="submit" value="로그아웃" id="logout">
+						[[<input type="submit" id="logout" value="로그아웃" class="btn btn-link" style="text-decoration: none;color:rgba(190, 218, 213, 1);">]]
 						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> </form></li>
 					</ul>
 					</sec:authorize>

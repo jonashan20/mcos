@@ -21,7 +21,10 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.project.maos" />
+	<context:component-scan base-package="com.project.maos.controller" />
+	<context:component-scan base-package="com.mcos" />
+	<context:component-scan base-package="com.team" />
+	<context:component-scan base-package="com.notice" />
 	
 	
 	

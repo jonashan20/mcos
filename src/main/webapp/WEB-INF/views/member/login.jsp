@@ -52,10 +52,10 @@
             <div class="logo-login">
                 <a href="index.jsp"><img src="/resources/images/mainlogo.svg" alt=""></a>
             </div>
-            <h2>로그인 </h2>
+            <h2>회원 로그인 </h2>
             <div class="form-input">
                 <label for="name">사번</label>
-                <input  type="text" name="userId" placeholder="ID">
+                <input type="text" name="userId" placeholder="ID">
             </div>
             <div class="form-input">
                 <label for="name">비밀번호</label>

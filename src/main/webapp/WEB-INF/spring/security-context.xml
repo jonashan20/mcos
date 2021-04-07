@@ -5,31 +5,42 @@
 	xmlns:c="http://www.springframework.org/schema/c"
 	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-	
-	<security:http>
-		<security:intercept-url pattern="/*" access="permitAll"/>
-		<security:intercept-url pattern="/member/*" access="permitAll"/>
-		<security:intercept-url pattern="/users/member" access="hasRole('ROLE_MEMBER')"/>
-		<security:intercept-url pattern="/users/admin" access="hasRole('ROLE_ADMIN')"/>
-		<security:form-login 
-		username-parameter="userId"
-		password-parameter="userPass"
-		login-page="/member/login"
-		default-target-url="/"/>
-		<security:logout logout-url="/logout"
-		logout-success-url="/" />
-	</security:http>
-	
+		
+		<security:http>
+			<security:intercept-url pattern="/*" access="permitAll"/>
+			<security:intercept-url pattern="/member/*" access="permitAll"/>
+			<security:intercept-url pattern="/notice/*" access="permitAll"/>
+			<security:form-login 
+			username-parameter="userId"
+			password-parameter="userPass"
+			login-page="/member/login"
+			default-target-url="/"/>
+			<security:logout logout-url="/logout"
+			logout-success-url="/" />
+		</security:http>
+		
 	<security:authentication-manager>	
 		<security:authentication-provider>
 		
-			<security:jdbc-user-service data-source-ref="dataSource" 
+ 			<security:jdbc-user-service data-source-ref="dataSource" 
 			users-by-username-query="SELECT userId,userPass, enabled 
 					FROM member WHERE USERID=?"
 			authorities-by-username-query="SELECT userId, auth,userName 
-					FROM member_role WHERE userId=?"
+					FROM member WHERE userId=?"
 			/>
-			<security:password-encoder ref="bcryptPasswordEncoder"/>
+<!-- 	 	<security:jdbc-user-service data-source-ref="dataSource" 
+			users-by-username-query="select m.userId,m.userPass,m.enabled,s.staffId,s.pass,s.enabled from member as m 
+			join staff as s where userid=? or staffid=?"
+			authorities-by-username-query="select m.userId,m.auth,s.staffId,s.auth from member as m 
+			join staff as s where userid=? or staffid=?"
+			/>  -->
+<!-- 		<security:jdbc-user-service data-source-ref="dataSource" 
+			users-by-username-query="select userId,userPass,enabled from member where userid=? union 
+			select staffId,pass,enabled from staff where staffId=999999"
+			authorities-by-username-query="select userId,auth from member where userid=? union 
+			select staffId,auth from staff where staffId=999999"
+			/>  -->
+		<security:password-encoder ref="bcryptPasswordEncoder"/>
 			
 		</security:authentication-provider>
 	</security:authentication-manager>  

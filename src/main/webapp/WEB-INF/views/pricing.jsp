@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
@@ -223,12 +225,23 @@
 						<li><a href="/">홈</a></li>
 						<li><a href="tour">기능소개</a></li>
 						<li><a href="pricing">가격정책</a></li>
+						<li><a href="/notice/list?num=1">고객지원</a></li>
 					</ul>
 					<h1 id="fh5co-logo"><img src="/resources/images/mainlogo.svg"><a href="/">MCOS<span>.</span></a></h1>
+					<sec:authorize access="isAnonymous()">
 					<ul class="pull-right right-menu">
 						<li><a href="member/login">로그인</a></li>
-						<li class="fh5co-cta-btn"><a href="member/register">회원가입</a></li>
+						<li class="fh5co-cta-btn"><a href="member/register">일반회원가입</a></li>
+						<li class="fh5co-cta-btn"><a href="member/executive_register">관리직회원가입</a></li>
 					</ul>
+					</sec:authorize>
+					<sec:authorize access="isAuthenticated()"> 
+					<ul class="pull-right right-menu">
+						<li><form action="${pageContext.request.contextPath}/logout" method="POST">
+						[[<input type="submit" id="logout" value="로그아웃" class="btn btn-link" style="text-decoration: none;color:rgba(190, 218, 213, 1);">]]
+						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" /> </form></li>
+					</ul>
+					</sec:authorize>
 				</nav>
 			</div>
 		</section>
@@ -279,7 +292,7 @@
 							<li>인사 DB 관리</li>
 							<li>급여정산/급여대장 관리</li>
 						</ul>
-						<a href="#" class="btn btn-default btn-sm" onclick="popup1()">시작하기</a>
+						<a href="" role="button" class="btn btn-default btn-sm" onclick="popup1()">시작하기</a>
 					</div>
 				</div>
 				<div class="clearfix visible-sm-block"></div>
